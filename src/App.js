@@ -3,6 +3,7 @@ import HigherOrderComponentsPractice from './Component/HigherOrderComponentsPrac
 import UseCallBackHook from './Component/UseCallBackHook';
 import UseMemoHook from './Component/UseMemoHook';
 import ErrorBoundary from './Component/ErrorBoundary';
+import CustomHook from './Component/CustomHooks'
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       {/* <HigherOrderComponentsPractice /> */}
       {/* <UseCallBackHook /> */}
       {/* <UseMemoHook/> */}
-      <ErrorBoundary/>
+      {/* <ErrorBoundary/> */}
+      {/* <CustomHook /> */}
     </div>
   );
 }
