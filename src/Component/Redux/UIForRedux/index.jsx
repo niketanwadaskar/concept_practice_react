@@ -1,21 +1,41 @@
-// ExampleComponent.js
-import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { add, divide, multiply, subtract } from '../../../Component/Redux/Action';
 
-const ExampleComponent = ({ dispatch }) => {
+class Index extends Component {
+  handleActions = (e) => {
+    const num = Number(e.target.value);
 
-  const state = useSelector(state => state);
-  const handleClick = () => {
-    // Dispatch an action
-    dispatch({ type: 'INCREMENT_COUNTER' });
+    // Dispatch the actions using the connected action creators
+    this.props.add(num);
+    this.props.multiply(num);
+    this.props.divide(num);
+    this.props.subtract(num);
   };
 
-  return (
-    <div>
-      <button onClick={handleClick}>Increment Counter</button>
-      <h1>{state.num}</h1>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <input onChange={(e) => this.handleActions(e)} type="number" value={this.props.num} />
+        <p>square of above number :- <span>{this.props.multiplication}</span></p>
+        <p>division of above number by 5 :-<span>{this.props.division}</span></p>
+        <p>subtraction of above number by 5 :-<span>{this.props.subtraction}</span></p>
+        <p>addition of above number by 5 :-<span>{this.props.addition}</span></p>
+      </div>
+    );
+  }
+}
+
+// Map Redux state to component props
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    addition: state.add.num, // Replace with your actual reducer name
+    multiplication: state.multiply.num, // Replace with your actual reducer name
+    division: state.divide.num, // Replace with your actual reducer name
+    subtraction: state.subtract.num, // Replace with your actual reducer name
+  };
 };
 
-export default connect()(ExampleComponent);
+// Connect the component to the Redux store and map action creators to props
+export default connect(mapStateToProps, { add, multiply, divide, subtract })(Index);
