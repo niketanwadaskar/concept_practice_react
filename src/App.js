@@ -4,6 +4,8 @@ import UseCallBackHook from './Component/UseCallBackHook';
 import UseMemoHook from './Component/UseMemoHook';
 import ErrorBoundary from './Component/ErrorBoundary';
 import CustomHook from './Component/CustomHooks'
+import Redux from './Component/Redux/UIForRedux'
+import UseLayoutEffect from "./Component/UseLayoutEffect";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       {/* <UseMemoHook/> */}
       {/* <ErrorBoundary/> */}
       {/* <CustomHook /> */}
+      {/* <Redux /> */}
+      <UseLayoutEffect />
     </div>
   );
 }
