@@ -6,6 +6,8 @@ import ErrorBoundary from './Component/ErrorBoundary';
 import CustomHook from './Component/CustomHooks'
 import Redux from './Component/Redux/UIForRedux'
 import ClassedBasedComponent from "./Component/ClassedBasedComponent";
+import ContextAPI from "./Component/ContenxtAPI";
+import ReduxToolkit from "./Component/ReduxToolkit";
 function App() {
   return (
     <div className="App">
@@ -14,9 +16,11 @@ function App() {
       {/* <UseMemoHook/> */}
       {/* <ErrorBoundary/> */}
       {/* <CustomHook /> */}
-      <Redux />
+      {/* <Redux /> */}
       {/* <UseLayoutEffect /> */}
       {/* <ClassedBasedComponent /> */}
+      {/* <ContextAPI/> */}
+      <ReduxToolkit/>
     </div>
   );
 }
