@@ -8,9 +8,24 @@ import Redux from './Component/Redux/UIForRedux'
 import ClassedBasedComponent from "./Component/ClassedBasedComponent";
 import ContextAPI from "./Component/ContenxtAPI";
 import ReduxToolkit from "./Component/ReduxToolkit";
+import ReactQuery from "./Component/ReactQuery";
+import { useEffect, useState } from 'react';
+import MultilevelDropdown from './Component/MultilevelDropdown';
 function App() {
+  const [one, setOne] = useState(1)
+  const [on, setOn] = useState(1)
+  function fun() {
+    setOne(prev => prev + 1)
+  }
+  useEffect(() => {
+    console.log("Effect")
+
+  }, [])
   return (
     <div className="App">
+      <div>
+        <button>okm</button>
+      </div>
       {/* <HigherOrderComponentsPractice /> */}
       {/* <UseCallBackHook /> */}
       {/* <UseMemoHook/> */}
@@ -20,7 +35,9 @@ function App() {
       {/* <UseLayoutEffect /> */}
       {/* <ClassedBasedComponent /> */}
       {/* <ContextAPI/> */}
-      <ReduxToolkit/>
+      {/* <ReduxToolkit/> */}
+      {/* <ReactQuery /> */}
+      {/* <MultilevelDropdown /> */}
     </div>
   );
 }
