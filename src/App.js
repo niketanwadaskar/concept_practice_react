@@ -23,13 +23,10 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <div>
-        <button>okm</button>
-      </div>
       {/* <HigherOrderComponentsPractice /> */}
       {/* <UseCallBackHook /> */}
       {/* <UseMemoHook/> */}
-      {/* <ErrorBoundary/> */}
+      <ErrorBoundary/>
       {/* <CustomHook /> */}
       {/* <Redux /> */}
       {/* <UseLayoutEffect /> */}

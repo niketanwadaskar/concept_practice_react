@@ -35,8 +35,6 @@ const dataSlice = createSlice({
                 state.error = action.error.message
             })
     }
-
-
 });
 
 
