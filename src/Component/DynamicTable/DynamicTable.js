@@ -1,64 +1,69 @@
 import React, { useState } from "react";
 
 const DynamicTable = () => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const data = [
+  // Data for table rows
+  const tableData = [
     { id: 1, name: "John", age: 30 },
     { id: 2, name: "Alice", age: 25 },
     { id: 3, name: "Bob", age: 28 },
     { id: 4, name: "Charlie", age: 35 },
   ];
 
-  const columns = [
+  // Column definitions for table headers
+  const tableColumns = [
     { key: "id", label: "ID" },
     { key: "name", label: "Name" },
     { key: "age", label: "Age" },
   ];
-  const [sortConfig, setSortConfig] = useState({
+
+  const [sortingConfig, setSortingConfig] = useState({
     key: "",
     direction: "ascending",
   });
 
-  // Function to handle sorting
-  const handleSort = (columnKey) => {
-    let direction = "ascending";
-    if (sortConfig.key === columnKey && sortConfig.direction === "ascending") {
-      direction = "descending";
+  // Function to handle sorting when a column header is clicked
+  const handleColumnSort = (columnKey) => {
+    let newDirection = "ascending";
+    if (
+      sortingConfig.key === columnKey &&
+      sortingConfig.direction === "ascending"
+    ) {
+      newDirection = "descending";
     }
 
-    setSortConfig({ key: columnKey, direction });
+    setSortingConfig({ key: columnKey, direction: newDirection });
   };
 
-  // Sort data based on column key and direction
-  const sortedData = React.useMemo(() => {
-    const sortableData = [...data];
-    if (sortConfig.key) {
-      sortableData.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? -1 : 1;
+  // Sort data based on the column key and direction
+  const sortedTableData = React.useMemo(() => {
+    const sortableData = [...tableData];
+    if (sortingConfig.key) {
+      sortableData.sort((firstRow, secondRow) => {
+        if (firstRow[sortingConfig.key] < secondRow[sortingConfig.key]) {
+          return sortingConfig.direction === "ascending" ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? 1 : -1;
+        if (firstRow[sortingConfig.key] > secondRow[sortingConfig.key]) {
+          return sortingConfig.direction === "ascending" ? 1 : -1;
         }
         return 0;
       });
     }
     return sortableData;
-  }, [data, sortConfig]);
+  }, [tableData, sortingConfig]);
 
   return (
     <table>
       <thead>
         <tr>
-          {columns.map((col) => (
+          {tableColumns.map((column) => (
             <th
-              key={col.key}
-              onClick={() => handleSort(col.key)}
+              key={column.key}
+              onClick={() => handleColumnSort(column.key)}
               style={{ cursor: "pointer" }}
             >
-              {col.label}
-              {sortConfig.key === col.key
-                ? sortConfig.direction === "ascending"
+              {column.label}
+              {sortingConfig.key === column.key
+                ? sortingConfig.direction === "ascending"
                   ? " ↑"
                   : " ↓"
                 : null}
@@ -67,10 +72,10 @@ const DynamicTable = () => {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((row, index) => (
-          <tr key={index}>
-            {columns.map((col) => (
-              <td key={col.key}>{row[col.key]}</td>
+        {sortedTableData.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {tableColumns.map((column) => (
+              <td key={column.key}>{row[column.key]}</td>
             ))}
           </tr>
         ))}
