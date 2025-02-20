@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import MultilevelDropdown from "./Component/MachineCoding/MultilevelDropdown";
 import DynamicTable from "./Component/MachineCoding/DynamicTable/DynamicTable";
 import CreatePortal from "./Component/Basics/CreatePortal";
+import StarRating from "./Component/MachineCoding/StarRating/StarRating.js";
 function App() {
   const [one, setOne] = useState(1);
   const [on, setOn] = useState(1);
@@ -37,7 +38,8 @@ function App() {
       {/* <ReactQuery /> */}
       {/* <MultilevelDropdown /> */}
       {/* <DynamicTable /> */}
-      <CreatePortal />
+      {/* <CreatePortal /> */}
+      <StarRating />
     </div>
   );
 }
