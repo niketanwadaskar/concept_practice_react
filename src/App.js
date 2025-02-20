@@ -35,7 +35,8 @@ function App() {
       {/* <ReduxToolkit/> */}
       {/* <ReactQuery /> */}
       {/* <MultilevelDropdown /> */}
-      <DynamicTable />
+      {/* <DynamicTable /> */}
+      
     </div>
   );
 }
