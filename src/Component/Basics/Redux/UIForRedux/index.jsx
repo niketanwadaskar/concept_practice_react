@@ -1,7 +1,7 @@
 // CLASSES BASED
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
-// import { add, divide, multiply, subtract } from '../../../Component/Redux/Action';
+// import { add, divide, multiply, subtract } from '../../../Basics/Redux/Action';
 
 // class Index extends Component {
 //   handleActions = (e) => {
@@ -46,7 +46,7 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, divide, multiply, subtract } from '../../../Component/Redux/Action';
+import { add, divide, multiply, subtract } from '../../../Basics/Redux/Action';
 
 const Index = () => {
   const dispatch = useDispatch();
