@@ -11,7 +11,7 @@ import ReduxToolkit from "./Component/Basics/ReduxToolkit";
 import ReactQuery from "./Component/Basics/ReactQuery";
 import { useEffect, useState } from "react";
 import MultilevelDropdown from "./Component/MachineCoding/MultilevelDropdown";
-import DynamicTable from "./Component/MachineCoding/DynamicRouting/DynamicTable";
+import DynamicTable from "./Component/MachineCoding/DynamicTable/DynamicTable";
 function App() {
   const [one, setOne] = useState(1);
   const [on, setOn] = useState(1);
