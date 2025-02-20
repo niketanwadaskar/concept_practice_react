@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 export default function CreatePortal({ children, onClose }) {
-  createPortal(
+  return createPortal(
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded shadow-lg">
         {children}
@@ -13,6 +13,7 @@ export default function CreatePortal({ children, onClose }) {
           Close
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

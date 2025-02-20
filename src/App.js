@@ -12,6 +12,7 @@ import ReactQuery from "./Component/Basics/ReactQuery";
 import { useEffect, useState } from "react";
 import MultilevelDropdown from "./Component/MachineCoding/MultilevelDropdown";
 import DynamicTable from "./Component/MachineCoding/DynamicTable/DynamicTable";
+import CreatePortal from "./Component/Basics/CreatePortal";
 function App() {
   const [one, setOne] = useState(1);
   const [on, setOn] = useState(1);
@@ -22,7 +23,7 @@ function App() {
     console.log("Effect");
   }, []);
   return (
-    <div className="App">
+    <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
       {/* <UseCallBackHook /> */}
       {/* <UseMemoHook/> */}
@@ -36,7 +37,7 @@ function App() {
       {/* <ReactQuery /> */}
       {/* <MultilevelDropdown /> */}
       {/* <DynamicTable /> */}
-      
+      <CreatePortal />
     </div>
   );
 }
