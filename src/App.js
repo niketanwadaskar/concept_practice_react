@@ -27,8 +27,8 @@ function App() {
   return (
     <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
-      {/* <UseCallBackHook /> */}
-      {/* <UseMemoHook/> */}
+      <UseCallBackHook />
+      <UseMemoHook/>
       {/* <ErrorBoundary /> */}
       {/* <CustomHook /> */}
       {/* <Redux /> */}
@@ -41,7 +41,7 @@ function App() {
       {/* <DynamicTable /> */}
       {/* <CreatePortal /> */}
       {/* <StarRating /> */}
-      <FetchAPI />
+      {/* <FetchAPI /> */}
     </div>
   );
 }
