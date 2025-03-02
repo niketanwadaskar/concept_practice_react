@@ -1,21 +1,13 @@
-import React, { useEffect } from 'react'
+import React from "react";
 
 export default function List({ getItems }) {
-    const [items, setItems] = React.useState(getItems());
+  console.log("Child rendered (List Component)");
 
-    useEffect(() => {
-        setItems(getItems());
-        console.log("Updating rendered")
-    }, [getItems])
-
-    return (
-        <div>
-            <h1>List</h1>
-            <ul>
-                {items.map((item) => (
-                    <li key={item}>{item}</li>
-                ))}
-            </ul>
-        </div>
-    )
+  return (
+    <ul>
+      {getItems().map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
 }
