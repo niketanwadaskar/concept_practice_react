@@ -1,130 +1,125 @@
 import React, { useState } from 'react';
 
 const MultilevelDropdown = () => {
-    const [menu, setMenu] = useState([
+    const [openSubmenus, setOpenSubmenus] = useState({});
+
+    // Example menu object with multiple levels
+    const menu = [
         {
-            id: 1,
-            title: 'Option 1',
-            children: [
-                {
-                    id: 11,
-                    title: 'Suboption 1.1',
-                    parent: 1,
-                    children: [
-                        { id: 111, title: 'Sub-suboption 1.1.1', parent: 11 },
-                        { id: 112, title: 'Sub-suboption 1.1.2', parent: 11 }
-                    ]
-                },
-                {
-                    id: 12,
-                    title: 'Suboption 1.2',
-                    parent: 1,
-                    children: [
-                        { id: 121, title: 'Sub-suboption 1.2.1', parent: 12 },
-                        { id: 122, title: 'Sub-suboption 1.2.2', parent: 12 }
-                    ]
-                }
-            ]
+            name: "HTML",
+            url: "#",
         },
         {
-            id: 2,
-            title: 'Option 2',
-            children: [
+            name: "CSS",
+            url: "#",
+        },
+        {
+            name: "New dropdown",
+            url: "#",
+            submenu: [
                 {
-                    id: 21,
-                    title: 'Suboption 2.1',
-                    parent: 2,
-                    children: [
-                        { id: 211, title: 'Sub-suboption 2.1.1', parent: 21 },
-                        { id: 212, title: 'Sub-suboption 2.1.2', parent: 21 }
-                    ]
+                    name: "2nd level dropdown",
+                    url: "#",
                 },
                 {
-                    id: 22,
-                    title: 'Suboption 2.2',
-                    parent: 2,
-                    children: [
-                        { id: 221, title: 'Sub-suboption 2.2.1', parent: 22 },
-                        { id: 222, title: 'Sub-suboption 2.2.2', parent: 22 }
-                    ]
-                }
-            ]
-        }
-    ]);
+                    name: "2nd level dropdown",
+                    url: "#",
+                    submenu: [
+                        {
+                            name: "3rd level dropdown",
+                            url: "#",
+                        },
+                        {
+                            name: "3rd level dropdown",
+                            url: "#",
+                            submenu: [
+                                {
+                                    name: "4th level dropdown",
+                                    url: "#",
+                                },
+                                {
+                                    name: "4th level dropdown",
+                                    url: "#",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    name: "Another dropdown",
+                    url: "#",
+                    submenu: [
+                        {
+                            name: "3rd level dropdown",
+                            url: "#",
+                        },
+                        {
+                            name: "3rd level dropdown",
+                            url: "#",
+                            submenu: [
+                                {
+                                    name: "4th level dropdown",
+                                    url: "#",
+                                },
+                                {
+                                    name: "4th level dropdown",
+                                    url: "#",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
 
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const handleOptionClick = (option) => {
-        console.log('Clicked option:', option);
-        setSelectedOption(option);
-        if (option.children) {
-            setMenuOpen(true); // Keep the menu open when a parent option is clicked
-        } else {
-            setMenuOpen(false); // Close the menu when a leaf option is clicked
-        }
+    // Function to toggle the visibility of a submenu based on its index
+    const toggleSubmenu = (index) => {
+        setOpenSubmenus((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index],
+        }));
     };
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+    // Recursive function to render each level of the menu
+    const renderMenu = (items, parentIndex = null) => (
+        <ul className="dropdown-menu bg-white shadow-lg rounded-md">
+            {items.map((item, index) => {
+                const currentIndex = parentIndex !== null ? `${parentIndex}-${index}` : `${index}`;
+                return (
+                    <li key={currentIndex} className={`relative ${item.submenu ? 'dropdown-submenu' : ''}`}>
+                        <a
+                            href={item.url}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer"
+                            onClick={(e) => {
+                                if (item.submenu) {
+                                    e.preventDefault();
+                                    toggleSubmenu(currentIndex);
+                                }
+                            }}
+                        >
+                            {item.name} {item.submenu && <span className="caret">▼</span>}
+                        </a>
+                        {item.submenu && openSubmenus[currentIndex] && (
+                            <div className="absolute left-full top-0 mt-1 w-48">
+                                {renderMenu(item.submenu, currentIndex)}
+                            </div>
+                        )}
+                    </li>
+                );
+            })}
+        </ul>
+    );
 
     return (
-        <div>
-            <h2>Multilevel Dropdown</h2>
+        <div className="relative inline-block text-left">
+            <h2 className="text-2xl font-semibold mb-4">Multilevel Dropdown</h2>
             <div className="dropdown">
-                <button
-                    className="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    onClick={toggleMenu}
-                >
-                    Select Option
+                <button className="bg-gray-700 text-white px-6 py-2 rounded-md hover:bg-gray-800 focus:outline-none">
+                    Tutorials
+                    <span className="caret">▼</span>
                 </button>
-                {menuOpen && (
-                    <div className="dropdown-menu">
-                        {menu.map((option) => (
-                            <div key={option.id} className="dropdown-item">
-                                <button
-                                    className="btn btn-info btn-block"
-                                    onClick={() => handleOptionClick(option)}
-                                >
-                                    {option.title}
-                                </button>
-                                {console.log('Rendered option:', option)}
-                                {selectedOption && selectedOption.id === option.id && option.children && (
-                                    <div className="sub-menu">
-                                        {option.children.map((child) => (
-                                            <div key={child.id} className="dropdown-item">
-                                                <button
-                                                    className="btn btn-light btn-block sub-item"
-                                                    onClick={() => handleOptionClick(child)}
-                                                    onMouseDown={(e) => e.preventDefault()}
-                                                >
-                                                    {child.title}
-                                                </button>
-                                                {console.log('Rendered child:', child)}
-                                                {selectedOption && selectedOption.id === child.parent && child.children && (
-                                                    <div className="sub-menu">
-                                                        {child.children.map((subChild) => (
-                                                            <button
-                                                                key={subChild.id}
-                                                                className="btn btn-light btn-block sub-item"
-                                                                onClick={() => handleOptionClick(subChild)}
-                                                                onMouseDown={(e) => e.preventDefault()}
-                                                            >
-                                                                {subChild.title}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                )}
+                {renderMenu(menu)}
             </div>
         </div>
     );
