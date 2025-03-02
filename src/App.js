@@ -23,7 +23,7 @@ function App() {
     <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
       <UseCallBackHook />
-      <UseMemoHook/>
+      <UseMemoHook />
       {/* <ErrorBoundary /> */}
       {/* <CustomHook /> */}
       {/* <Redux /> */}
@@ -36,8 +36,8 @@ function App() {
       {/* <DynamicTable /> */}
       {/* <CreatePortal /> */}
       {/* <StarRating /> */}
-      {/* {/* <FetchAPI /> */}
-      <TryHarder/> */}
+      {/*  <FetchAPI /> */}
+      <TryHarder />
     </div>
   );
 }
