@@ -16,14 +16,16 @@ import CreatePortal from "./Component/Basics/CreatePortal";
 import StarRating from "./Component/MachineCoding/StarRating/StarRating.js";
 import FetchAPI from "./Component/MachineCoding/FetchAPI/FetchAPI";
 import TryHarder from "./TryHarder.jsx";
+import Counter from "./Component/MachineCoding/Counter/Counter.jsx";
+import GuessNumber from "./Component/MachineCoding/GuessNumber/GuessNumber.jsx";
 function App() {
   const [one, setOne] = useState(1);
   const [on, setOn] = useState(1);
   return (
     <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
-      <UseCallBackHook />
-      <UseMemoHook />
+      {/* <UseCallBackHook /> */}
+      {/* <UseMemoHook /> */}
       {/* <ErrorBoundary /> */}
       {/* <CustomHook /> */}
       {/* <Redux /> */}
@@ -37,7 +39,9 @@ function App() {
       {/* <CreatePortal /> */}
       {/* <StarRating /> */}
       {/*  <FetchAPI /> */}
-      <TryHarder />
+      {/* <TryHarder /> */}
+      {/* <Counter/> */}
+      <GuessNumber/>
     </div>
   );
 }
