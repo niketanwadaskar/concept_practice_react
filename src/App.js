@@ -19,6 +19,7 @@ import TryHarder from "./TryHarder.jsx";
 import Counter from "./Component/MachineCoding/Counter/Counter.jsx";
 import GuessNumber from "./Component/MachineCoding/GuessNumber/GuessNumber.jsx";
 import UseTransition from "./Component/Basics/UseTransition/index.jsx";
+import ToDoList from "./Component/MachineCoding/ToDoList/index.jsx";
 function App() {
 
   function handleRender(id, phase, actualDuration) {
@@ -47,8 +48,9 @@ function App() {
       {/* <Profiler id="IAmProfiler" onRender={handleRender}>
         <Counter />
       </Profiler> */}
-      <UseTransition />
+      {/* <UseTransition /> */}
       {/* <GuessNumber/> */}
+      <ToDoList />
     </div>
   );
 }
