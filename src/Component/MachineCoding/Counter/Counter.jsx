@@ -4,7 +4,6 @@ export default function Counter() {
 
     const [count, setCount] = useState(0);
     function handleIncrease() {
-        console.log("text")
         setCount(prev => prev + 1)
     }
     function handleDecrease() {
