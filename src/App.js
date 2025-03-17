@@ -15,20 +15,13 @@ import DynamicTable from "./Component/MachineCoding/DynamicTable/DynamicTable";
 import CreatePortal from "./Component/Basics/CreatePortal";
 import StarRating from "./Component/MachineCoding/StarRating/StarRating.js";
 import FetchAPI from "./Component/MachineCoding/FetchAPI/FetchAPI";
+import TreeDropdown from "./Component/MachineCoding/TreeDropdown/TreeDropdown";
 function App() {
-  const [one, setOne] = useState(1);
-  const [on, setOn] = useState(1);
-  function fun() {
-    setOne((prev) => prev + 1);
-  }
-  useEffect(() => {
-    console.log("Effect");
-  }, []);
   return (
     <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
-      <UseCallBackHook />
-      <UseMemoHook/>
+      {/* <UseCallBackHook />
+      <UseMemoHook/> */}
       {/* <ErrorBoundary /> */}
       {/* <CustomHook /> */}
       {/* <Redux /> */}
@@ -42,6 +35,7 @@ function App() {
       {/* <CreatePortal /> */}
       {/* <StarRating /> */}
       {/* <FetchAPI /> */}
+      <TreeDropdown />
     </div>
   );
 }
