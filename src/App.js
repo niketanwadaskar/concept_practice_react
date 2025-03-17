@@ -29,7 +29,7 @@ function App() {
     <div className="App" id="model-root">
       {/* <HigherOrderComponentsPractice /> */}
       {/* {/* <UseCallBackHook /> */}
-      {/* <UseMemoHook /> */} */}
+      {/* <UseMemoHook /> */}
       {/* <ErrorBoundary /> */}
       {/* <CustomHook /> */}
       {/* <Redux /> */}
