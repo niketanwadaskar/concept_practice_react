@@ -48,7 +48,7 @@ function App() {
       {/* <Profiler id="IAmProfiler" onRender={handleRender}>
         <Counter />
       </Profiler> */}
-      <UseTransition />
+      {/* <UseTransition /> */}
       {/* <GuessNumber/> */}
       <TreeDropdown />
     </div>
