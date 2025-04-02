@@ -43,14 +43,14 @@ function App() {
       {/* <CreatePortal /> */}
       {/* <StarRating /> */}
       {/*  <FetchAPI /> */}
-      {/* <TryHarder /> */}
+      <TryHarder />
       {/* <Counter/> */}
       {/* <Profiler id="IAmProfiler" onRender={handleRender}>
         <Counter />
       </Profiler> */}
       {/* <UseTransition /> */}
       {/* <GuessNumber/> */}
-      <TreeDropdown />
+      {/* <TreeDropdown /> */}
     </div>
   );
 }
