@@ -1,97 +1,40 @@
-import React from 'react'
-const menu = [
-    {
-        name: "HTML",
-        url: "#",
-    },
-    {
-        name: "CSS",
-        url: "#",
-    },
-    {
-        name: "New dropdown",
-        url: "#",
-        submenu: [
-            {
-                name: "2nd level dropdown",
-                url: "#",
-            },
-            {
-                name: "2nd level dropdown",
-                url: "#",
-                submenu: [
-                    {
-                        name: "3rd level dropdown",
-                        url: "#",
-                    },
-                    {
-                        name: "3rd level dropdown",
-                        url: "#",
-                        submenu: [
-                            {
-                                name: "4th level dropdown",
-                                url: "#",
-                            },
-                            {
-                                name: "4th level dropdown",
-                                url: "#",
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                name: "Another dropdown",
-                url: "#",
-                submenu: [
-                    {
-                        name: "3rd level dropdown",
-                        url: "#",
-                    },
-                    {
-                        name: "3rd level dropdown",
-                        url: "#",
-                        submenu: [
-                            {
-                                name: "4th level dropdown",
-                                url: "#",
-                            },
-                            {
-                                name: "4th level dropdown",
-                                url: "#",
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
-    },
-];
+import { useEffect, useLayoutEffect, useRef } from "react";
 
-export default function TryHarder() {
-    const renderMenu = (items, parentIndex = null) => {
-        return <ul>
-            {items.map((elem, index) => {
-                return <li key={index}>
-                    <a href={elem.url} onClick={(e) => {
-                        if (items.submenu) {
-                            e.preventDefault();
+function ExploringReactRefs() {
+  // Why does this ref start as null?
+  // When does it get its actual value?
+  const divRef = useRef(null);
 
-                        }
-                    }}>{elem.name}</a>
-                    {elem.submenu && renderMenu(elem.submenu)}
-                </li>
+  // This feels like it should work... but does it?
+  // When exactly does this effect run?
+  useEffect(() => {
+    console.log("Effect:", divRef.current?.getBoundingClientRect());
+  }, []);
 
-            })}
-        </ul>
+  // What's different about this effect?
+  // Why might we need this instead of useEffect?
+  useLayoutEffect(() => {
+    console.log("Layout Effect:", divRef.current?.getBoundingClientRect());
+  }, []);
+
+  // What's special about this callback ref approach?
+  // When does this function actually get called?
+  // See the second div below where handleRef is used.
+  const handleRef = (node) => {
+    if (node) {
+      console.log("Callback ref:", node.getBoundingClientRect());
     }
+  };
 
-    return (
-        <div>
-            <button >
-                Open Menu
-            </button>
-            {renderMenu(menu)}
-        </div>
-    )
+  return (
+    <div className="flex gap-4">
+      {/* When can we actually access this element via divRef? */}
+      <div ref={divRef}>Using useRef</div>
+
+      {/* How is this different from useRef? */}
+      <div ref={handleRef}>Using callback ref</div>
+    </div>
+  );
 }
+
+export default ExploringReactRefs;
